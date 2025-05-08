@@ -1,0 +1,148 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Hanalei&family=Hanalei+Fill&display=swap');
+
+/* Alles zurücksetzen */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: #FFD12C; /* Beer color */
+  font-family:  "Hanalei Fill", sans-serif;
+  position: relative;
+}
+
+/* Liquid background animation for bubbles */
+#liquid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Place the liquid container behind content */
+}
+
+#liquid .bubble {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7); /* Make bubbles more visible */
+  border-radius: 50%;
+  opacity: 0.7;
+  animation-name: bubble;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+/* Bubble rise animation */
+@keyframes bubble {
+  0% {
+    bottom: 0;
+    transform: scale(1);
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    bottom: 100%;
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Header ganz oben zentriert */
+header {
+  width: 100%;
+  text-align: center;
+  position: relative; /* Add relative positioning */
+  z-index: 2; /* Set a higher z-index for the header */
+  display: inline-block;
+
+}
+
+h1 {
+  font-family:  "Hanalei Fill", sans-serif;
+  font-size: clamp(1.5*3em, 5.5*3vw, 6.25*3rem);
+  text-align: center;
+  line-height: 1;
+  pointer-events: none;
+  position: relative; /* Ensure it stays on top of the Schaum image */
+  z-index: 3; /* This will ensure h1 stays in front of Schaum */
+}
+
+/* Position the schaum image behind the header */
+#schaum {
+  position: absolute; /* Position the image absolutely within the header */
+  top: 50%; /* Vertically center the image */
+  left: 50%; /* Horizontally center the image */
+  transform: translate(-50%, -50%); /* Offset the image by 50% of its width and height */
+  width: 100%;
+  height: auto;
+  max-width: 1816px;
+  z-index: 1; /* Set a lower z-index to place the image behind the header */
+}
+
+/* Main-Content darunter */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#getBreweryBtn {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 1;
+  margin-top: 20%;
+  margin-bottom: 10%;
+}
+
+#getBreweryBtn img {
+  width: clamp(1.5*5rem, 5.5*5vw, 6.25*5rem);
+  height: auto;       
+  border: none;
+  z-index: 1;
+}
+
+#getBreweryBtn:hover {
+  transform: scale(1.1);
+}
+
+#flasche {
+  width: 100%;
+  height: auto;
+  max-width: 1816px;
+  z-index: 1;
+}
+
+.flasche_mit_text {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  z-index: 1;
+}
+
+#noResultText {
+  position: absolute;
+  bottom: 25%;
+  left: 70%;
+  transform: translateX(-50%);
+  font-family: "Hanalei Fill", sans-serif;
+  font-size: clamp(1.5rem, 5.5vw, 6.25rem);
+  color: black;
+  padding: 8px;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+
