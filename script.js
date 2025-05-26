@@ -30,3 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // Create bubbles at intervals
   setInterval(createBubble, 300);
 });
+
+    // script.js 
+    document.getElementById('getBreweryBtn').addEventListener('click', function() { 
+      window.scrollTo({ 
+          top: document.body.scrollHeight, 
+          behavior: 'smooth' // This makes the scrolling smooth 
+      }); 
+  }); 
