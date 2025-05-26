@@ -38,3 +38,68 @@ document.addEventListener('DOMContentLoaded', () => {
           behavior: 'smooth' // This makes the scrolling smooth 
       }); 
   }); 
+
+  document.addEventListener('DOMContentLoaded', () => {
+  // Bubble animation code remains unchanged...
+
+  // Map reference
+  let map;
+  let marker;
+
+  document.getElementById('getBreweryBtn').addEventListener('click', async () => {
+    // Smooth scroll
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+
+    try {
+      const response = await fetch('https://api.openbrewerydb.org/v1/breweries/random');
+      const data = await response.json();
+      const brewery = data[0];
+
+      // Format brewery info
+      const info = `
+        ${brewery.name}<br>
+        ${brewery.brewery_type}<br>
+        ${brewery.street || ''}<br>
+        ${brewery.city}, ${brewery.state} ${brewery.postal_code}<br>
+        <a href="${brewery.website_url}" target="_blank">Website</a>
+      `;
+
+      document.getElementById('noResultText').innerHTML = info;
+
+      // Show map container
+      const mapContainer = document.getElementById('map');
+      mapContainer.style.display = 'block';
+
+      // Check if coordinates are available
+      if (brewery.latitude && brewery.longitude) {
+        const lat = parseFloat(brewery.latitude);
+        const lng = parseFloat(brewery.longitude);
+
+        // Initialize or update the map
+        if (!map) {
+          map = L.map('map').setView([lat, lng], 13);
+
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+          }).addTo(map);
+
+          marker = L.marker([lat, lng]).addTo(map);
+        } else {
+          map.setView([lat, lng], 13);
+          marker.setLatLng([lat, lng]);
+        }
+
+        setTimeout(() => {
+          map.invalidateSize();
+          }, 300); // slight delay to ensure DOM is ready
+
+
+      } else {
+        mapContainer.innerHTML = '<p style="text-align:center; color:red;">Keine Standortdaten verfügbar.</p>';
+      }
+    } catch (err) {
+      document.getElementById('noResultText').innerHTML = 'Fehler beim Abrufen der Brauerei.';
+      console.error(err);
+    }
+  });
+});

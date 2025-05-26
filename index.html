@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BIERER</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Leaflet CSS & JS -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  defer
+></script>
+
   <script src="script.js" defer></script> <!-- Ensure 'defer' is used -->
 </head>
 <body>
@@ -20,9 +30,15 @@
       <button id="getBreweryBtn">
         <img src="Bilder/Bierdeckel_ungewaehlt.png" alt="Icon" />
       </button>
-      <div class="flasche_mit_text">
-        <p id="noResultText">noch kein<br>suchergebnis</p>
-        <img id="flasche" src="Bilder/flasche_gruen.png" />
+      <div id="flasche_bg">
+        <div class="flasche_mit_text">
+            <div class="flasche_map_wrapper">
+              <img id="flasche" src="Bilder/flasche_gruen.png" />
+              <p id="noResultText">noch kein<br>suchergebnis</p>
+              <div id="map"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   </section>
