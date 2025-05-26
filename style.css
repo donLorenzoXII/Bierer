@@ -58,11 +58,12 @@ html, body {
 header {
   width: 100%;
   text-align: center;
-  position: relative; /* Add relative positioning */
-  z-index: 2; /* Set a higher z-index for the header */
+  position: relative;
+  z-index: 2;
   display: inline-block;
-
+  background-color: white; /* ✅ Add this line */
 }
+
 
 h1 {
   font-family:  "Hanalei Fill", sans-serif;
