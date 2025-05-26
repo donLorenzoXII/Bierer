@@ -4,10 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const bubble = document.createElement('div');
     bubble.classList.add('bubble');
 
-    // Random size between 10px and 60px
-    const size = Math.random() * 50 + 10;
-    bubble.style.width = `${size}px`;
-    bubble.style.height = `${size}px`;
+    // Random size between 2% and 6% of container width
+    const size = Math.random() * 3 + 1;
+    bubble.style.width = `${size}%`;
+    bubble.style.height = `${size}%`;
 
     // Random horizontal position (0% to 100% width)
     bubble.style.left = `${Math.random() * 100}%`;
