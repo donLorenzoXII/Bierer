@@ -150,20 +150,21 @@ main {
   z-index: 1;
 }
 
-
-.flasche_mit_text {
-}
-
 #noResultText {
-  bottom: 25%;
-  left: 70%;
+  position: absolute;
+  top: 50%; /* adjust as needed to center vertically in label */
+  left: 70%; /* adjust to move into the brown label */
+  transform: translate(-50%, -50%); /* center the text around the point */
   font-family: "Hanalei Fill", sans-serif;
-  font-size: clamp(1.5rem, 5.5vw, 6.25rem);
+  font-size: clamp(1rem, 2.5vw, 2rem);
   color: black;
-  padding: 8px;
-  border-radius: 8px;
-  z-index: 1;
+  padding: 1rem;
+  text-align: left;
+  max-width: 40%;
+  z-index: 3; /* ensure it's above the bottle */
+  pointer-events: none;
 }
+
 
 
 

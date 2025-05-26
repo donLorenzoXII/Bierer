@@ -55,25 +55,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await response.json();
       const brewery = data[0];
 
-      // Format brewery info
-      const info = `
-        ${brewery.name}<br>
-        ${brewery.brewery_type}<br>
-        ${brewery.street || ''}<br>
-        ${brewery.city}, ${brewery.state} ${brewery.postal_code}<br>
-        <a href="${brewery.website_url}" target="_blank">Website</a>
-      `;
-
-      document.getElementById('noResultText').innerHTML = info;
-
-      // Show map container
-      const mapContainer = document.getElementById('map');
-      mapContainer.style.display = 'block';
-
       // Check if coordinates are available
       if (brewery.latitude && brewery.longitude) {
         const lat = parseFloat(brewery.latitude);
         const lng = parseFloat(brewery.longitude);
+
+        // Format brewery info
+        const info = `
+          ${brewery.name}<br>
+          ${brewery.brewery_type}<br>
+          ${brewery.street || ''}<br>
+          ${brewery.city}, ${brewery.state} ${brewery.postal_code}<br>
+        `;
+
+        document.getElementById('noResultText').innerHTML = info;
+
+        // Show map container
+        const mapContainer = document.getElementById('map');
+        mapContainer.style.display = 'block';
 
         // Initialize or update the map
         if (!map) {
@@ -91,11 +90,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(() => {
           map.invalidateSize();
-          }, 300); // slight delay to ensure DOM is ready
-
-
+        }, 300); // slight delay to ensure DOM is ready
       } else {
-        mapContainer.innerHTML = '<p style="text-align:center; color:red;">Keine Standortdaten verfügbar.</p>';
+        // If no coordinates are available
+        document.getElementById('noResultText').innerHTML = 'Fehler beim Laden :(<br>Probiere es doch noch einmal!';
+        const mapContainer = document.getElementById('map');
+        mapContainer.style.display = 'none'; // Hide map if no coordinates
       }
     } catch (err) {
       document.getElementById('noResultText').innerHTML = 'Fehler beim Abrufen der Brauerei.';
