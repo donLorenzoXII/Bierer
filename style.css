@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Hanalei&family=Hanalei+Fill&display=swap');
 
 /* Alles zurücksetzen */
@@ -10,7 +10,7 @@
 
 html, body {
   background-color: #FFD12C; /* Beer color */
-  font-family:  "Hanalei Fill", sans-serif;
+  font-family: "Fredericka the Great", serif;
   position: relative;
 }
 
@@ -27,9 +27,12 @@ html, body {
 #liquid .bubble {
   position: absolute;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.7); /* Make bubbles more visible */
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 50%;
   opacity: 0.7;
+  aspect-ratio: 1 / 1; /* Ensures bubbles stay perfectly round */
+  width: 3vw;           /* Responsive width, scales with viewport width */
+  height: auto;         /* Height is set by aspect-ratio */
   animation-name: bubble;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
@@ -65,8 +68,9 @@ header {
 }
 
 h1 {
-  font-family:  "Hanalei Fill", sans-serif;
+  font-family: "Oi", serif;
   font-size: clamp(1.5*3em, 5.5*3vw, 6.25*3rem);
+  margin-top: 20px;
   text-align: center;
   line-height: 1;
   pointer-events: none;
@@ -112,10 +116,14 @@ main {
   height: auto;       
   border: none;
   z-index: 1;
+  transition: 
+    opacity 0.2s,
+    transform 0.5s cubic-bezier(.68,-0.55,.27,1.55); /* bounce effect */
 }
 
-#getBreweryBtn:hover {
-  transform: scale(1.1);
+#getBreweryBtn:hover img {
+  content: url('Bilder/Bierdeckel_ausgewaehlt.png');
+  transform: scale(1.15) rotate(-8deg);
 }
 
 .flasche_map_wrapper {
@@ -138,7 +146,7 @@ main {
   top: 50%; /* half-way beneath the top of the image */
   left: 0;
   width: 100%;
-  height: 150%; /* you can adjust this for how much map is shown */
+  height: 137%; /* you can adjust this for how much map is shown */
   z-index: 1;
 }
 
@@ -165,16 +173,56 @@ main {
   pointer-events: none;
 }
 
+.fredericka-the-great-regular {
+  font-family: "Fredericka the Great", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1,
+#noResultText,
+button,
+input,
+select,
+textarea,
+header,
+main,
+.flasche_bg,
+#getBreweryBtn,
+#getBreweryBtn img,
+#flasche,
+#map {
+  font-family: "Fredericka the Great", serif !important;
+  font-weight: 400;
+  font-style: normal;
+}
+
 @media only screen and (max-width: 605px) {
   #noResultText {
     font-size: clamp(0.67rem, 1.67vw, 1.3rem);
   }
   #map {
-    height: 200%; /* you can adjust this for how much map is shown */
+    height: 380%; /* you can adjust this for how much map is shown */
   }
   #getBreweryBtn {
-    margin-top: 30%;
+    margin-top: 45%;
     margin-bottom: 30%;
+  }
+  #getBreweryBtn img {
+    transform: scale(2);
+  }
+  #getBreweryBtn:hover img {
+    transform: scale(2.3) rotate(-8deg);
+  }
+  #liquid .bubble {
+  width: 8vw;
+  height: 8vw;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  min-width: 20px;
+  min-height: 20px;
+  max-width: 60px;
+  max-height: 60px;
   }
 }
 

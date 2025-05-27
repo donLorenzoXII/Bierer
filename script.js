@@ -73,6 +73,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const mapContainer = document.getElementById('map');
         mapContainer.style.display = 'block';
 
+        // Flasche auf grün zurücksetzen
+        const flascheImg = document.getElementById('flasche');
+        if (flascheImg) {
+          flascheImg.src = 'Bilder/flasche_gruen.png';
+          // Alternativ absoluter Pfad:
+          // flascheImg.src = 'C:/Users/loren/OneDrive/Dokumente/School/FHGr/02_Semester 2/05_Interaktive Medien/Bierer/Bilder/flasche_gruen.png';
+        }
+
         // Initialize or update the map
         if (!map) {
           map = L.map('map').setView([lat, lng], 13);
@@ -95,6 +103,14 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('noResultText').innerHTML = 'Fehler beim Laden :(<br>Probiere es doch noch einmal!';
         const mapContainer = document.getElementById('map');
         mapContainer.style.display = 'none'; // Hide map if no coordinates
+
+        // Flasche auf braun ändern
+        const flascheImg = document.getElementById('flasche');
+        if (flascheImg) {
+          flascheImg.src = 'Bilder/Flasche braun.png';
+          // Alternativ absoluter Pfad:
+          // flascheImg.src = 'C:/Users/loren/OneDrive/Dokumente/School/FHGr/02_Semester 2/05_Interaktive Medien/Bierer/Bilder/Flasche braun.png';
+        }
       }
     } catch (err) {
       document.getElementById('noResultText').innerHTML = 'Fehler beim Abrufen der Brauerei.';
