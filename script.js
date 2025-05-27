@@ -64,8 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const info = `
           ${brewery.name}<br>
           ${brewery.brewery_type}<br>
-          ${brewery.street || ''}<br>
-          ${brewery.city}, ${brewery.state} ${brewery.postal_code}<br>
+          ${brewery.city}, ${brewery.state}
         `;
 
         document.getElementById('noResultText').innerHTML = info;
