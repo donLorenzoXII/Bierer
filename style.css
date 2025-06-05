@@ -202,7 +202,7 @@ main,
 
 
 
-@media only screen and (max-width: 824px) {
+@media only screen and (max-width: 1024px) {
   #noResultText {
     font-size: clamp(0.67rem, 1.67vw, 1.3rem);
   }
