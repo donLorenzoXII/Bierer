@@ -30,12 +30,17 @@ html, body {
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 50%;
   opacity: 0.7;
-  aspect-ratio: 1 / 1; /* Ensures bubbles stay perfectly round */
-  width: 3vw;           /* Responsive width, scales with viewport width */
-  height: auto;         /* Height is set by aspect-ratio */
+  aspect-ratio: 1 / 1;      /* Always a perfect circle */
+  width: 3vw;               /* Default width, overridden by JS */
+  min-width: 20px;          /* Prevents too small bubbles */
+  min-height: 20px;
+  max-width: 60px;          /* Prevents too large bubbles */
+  max-height: 60px;
+  height: auto;             /* Height is set by aspect-ratio */
   animation-name: bubble;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+  pointer-events: none;
 }
 
 /* Bubble rise animation */
@@ -207,7 +212,7 @@ main,
     font-size: clamp(0.67rem, 1.67vw, 1.3rem);
   }
   #map {
-    height: 50vh; /* you can adjust this for how much map is shown */
+    height: 50vh;
   }
   #getBreweryBtn {
     margin-top: 45%;
@@ -220,26 +225,23 @@ main,
     transform: scale(2.3) rotate(-8deg);
   }
   #liquid .bubble {
-  width: 8vw;
-  height: 8vw;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  min-width: 20px;
-  min-height: 20px;
-  max-width: 60px;
-  max-height: 60px;
+    width: 5vw !important;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 50% !important;
+    min-width: 12px !important;
+    min-height: 12px !important;
+    max-width: 32px !important;
+    max-height: 32px !important;
+    height: auto !important;
   }
 }
-
-
-
 
 @media only screen and (max-width: 605px) {
   #noResultText {
     font-size: clamp(0.67rem, 1.67vw, 1.3rem);
   }
   #map {
-    height: 380%; /* you can adjust this for how much map is shown */
+    height: 380%;
   }
   #getBreweryBtn {
     margin-top: 45%;
@@ -252,14 +254,14 @@ main,
     transform: scale(2.3) rotate(-8deg);
   }
   #liquid .bubble {
-  width: 8vw;
-  height: 8vw;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  min-width: 20px;
-  min-height: 20px;
-  max-width: 60px;
-  max-height: 60px;
+    width: 8vw !important;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 50% !important;
+    min-width: 8px !important;
+    min-height: 8px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
+    height: auto !important;
   }
 }
 

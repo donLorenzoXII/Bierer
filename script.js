@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     bubble.style.width = `${size}%`;
     bubble.style.height = `${size}%`;
 
+    // Make the bubble perfectly round
+    bubble.style.borderRadius = '50%';
+
     // Random horizontal position (0% to 100% width)
     bubble.style.left = `${Math.random() * 100}%`;
 
@@ -18,8 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add bubble to the #liquid container
     document.getElementById('liquid').appendChild(bubble);
-
-    console.log('Bubble created:', bubble); // Debugging line
 
     // Remove bubble after animation ends
     setTimeout(() => {
@@ -31,15 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(createBubble, 300);
 });
 
-    // script.js 
-    document.getElementById('getBreweryBtn').addEventListener('click', function() { 
-      window.scrollTo({ 
-          top: document.body.scrollHeight, 
-          behavior: 'smooth' // This makes the scrolling smooth 
-      }); 
+// script.js 
+document.getElementById('getBreweryBtn').addEventListener('click', function() { 
+  window.scrollTo({ 
+      top: document.body.scrollHeight, 
+      behavior: 'smooth' // This makes the scrolling smooth 
   }); 
+}); 
 
-  document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   // Bubble animation code remains unchanged...
 
   // Map reference
